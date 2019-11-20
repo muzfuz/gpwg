@@ -17,13 +17,15 @@ func GenerateTickets(n int) string {
 	return ticketsStr
 }
 
+// ticket formats each ticket and presents
+// the raw numbers in a human readable format
 func ticket() string {
 	t := trip.New()
 	return fmt.Sprintf(
 		"%-18s %d %-10s $%4d\n",
 		t.Spaceline(),
-		t.DurationDays(),
+		t.DurationSeconds()/86400, // number of seconds in a day
 		t.Type(),
-		t.Price()/1_000_000,
+		t.Price()/1_000_000, // price is in millions
 	)
 }

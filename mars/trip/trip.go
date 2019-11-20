@@ -45,11 +45,6 @@ func (t Trip) DurationSeconds() int {
 	return distanceToMars / t.travelSpeed
 }
 
-// DurationDays returns the number of days rounded down from the number of seconds
-func (t Trip) DurationDays() int {
-	return t.DurationSeconds() / 86400 // number of seconds in a day
-}
-
 // Price defines how much the trip will cost.
 // It is calculated based on travel speed, at a cost
 // of costPerKMS for each additional km/s from baseline (minTravelSpeed)
