@@ -18,14 +18,21 @@ func GenerateTickets(n int) string {
 }
 
 // ticket formats each ticket and presents
-// the raw numbers in a human readable format
+// the information in a human readable format
 func ticket() string {
 	t := trip.New()
 	return fmt.Sprintf(
 		"%-18s %d %-10s $%4d\n",
 		t.Spaceline(),
 		t.DurationSeconds()/86400, // number of seconds in a day
-		t.Type(),
+		tripType(t.RoundTrip),
 		t.Price()/1_000_000, // price is in millions
 	)
+}
+
+func tripType(roundTrip bool) string {
+	if roundTrip {
+		return "Round-trip"
+	}
+	return "One-way"
 }

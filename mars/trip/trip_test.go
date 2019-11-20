@@ -45,6 +45,6 @@ func Test_Price(t *testing.T) {
 }
 
 func Test_Price_RoundTrip(t *testing.T) {
-	trip := Trip{travelSpeed: minTravelSpeed, roundTrip: true}
+	trip := Trip{travelSpeed: minTravelSpeed, RoundTrip: true}
 	assert.Equal(t, minPrice*2, trip.Price(), "A return trip costs twice as much")
 }

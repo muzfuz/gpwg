@@ -22,7 +22,7 @@ var (
 type Trip struct {
 	spaceline   string
 	travelSpeed int
-	roundTrip   bool
+	RoundTrip   bool
 }
 
 // New returns an instance of a single Trip,
@@ -31,7 +31,7 @@ func New() Trip {
 	return Trip{
 		spaceline:   randomSpaceline(),
 		travelSpeed: randomTravelSpeed(),
-		roundTrip:   randomBool(),
+		RoundTrip:   randomBool(),
 	}
 }
 
@@ -51,18 +51,10 @@ func (t Trip) DurationSeconds() int {
 func (t Trip) Price() int {
 	additionalKMS := t.travelSpeed - minTravelSpeed
 	price := minPrice + (additionalKMS * costPerKMS)
-	if t.roundTrip {
+	if t.RoundTrip {
 		price = price * 2
 	}
 	return price
-}
-
-// Type returns a One-way or Round-trip string
-func (t Trip) Type() string {
-	if t.roundTrip {
-		return "Round-trip"
-	}
-	return "One-way"
 }
 
 // randomSpaceline chooses one of the configured spacelines at random
